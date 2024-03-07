@@ -48,12 +48,17 @@ app.put('/cuentas/:id', async (req, res) => {
     const { balance } = req.body;
     const client = await pool.connect();
     try {
+        await client.query('BEGIN');
+        await client.query('SAVEPOINT before_update');
         const { rows } = await client.query('UPDATE cuentas SET balance = $1 WHERE numero_cuenta = $2 RETURNING *', [balance, id]);
         if (rows.length === 0) {
-            return res.status(404).json({ error: 'Cuenta no encontrada' });
+            throw new Error('Cuenta no encontrada');
         }
+        await client.query('COMMIT');
         res.json(rows[0]);
     } catch (error) {
+        await client.query('ROLLBACK TO before_update');
+        await client.query('COMMIT'); // Es opcional terminar la transacción después de un rollback a un savepoint
         res.status(500).json({ error: error.message });
     } finally {
         client.release();

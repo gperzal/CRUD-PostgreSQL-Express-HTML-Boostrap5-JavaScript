@@ -1,0 +1,9 @@
+body {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background: rgb(1,89,135);
+background: linear-gradient(90deg, rgba(1,89,135,1) 0%, rgba(182,186,159,1) 25%, rgba(27,88,107,0.15730042016806722) 50%, rgba(182,186,159,1) 75%, rgba(1,89,135,1) 100%);
+}
+

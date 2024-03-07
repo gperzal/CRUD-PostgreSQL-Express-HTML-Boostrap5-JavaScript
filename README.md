@@ -1,4 +1,4 @@
-# CRUD Postgres + Express
+# CRUD Postgres + Express + MVC
 
 Este proyecto es una aplicación web que realiza operaciones CRUD (Crear, Leer, Actualizar, Eliminar) en una base de datos de cuentas.
 

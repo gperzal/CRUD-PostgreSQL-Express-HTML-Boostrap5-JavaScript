@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function fetchCuentas() {
-        fetch('/api/cuentas')
+        fetch('/cuentas')
             .then(response => response.json())
             .then(data => {
                 cuentasTableBody.innerHTML = ''; // Limpia la tabla antes de agregar nuevas filas
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const cuentaId = cuentaForm.getAttribute('data-cuenta-id');
 
         const method = cuentaId ? 'PUT' : 'POST';
-        const url = cuentaId ? `/api/cuentas/${cuentaId}` : '/api/cuentas';
+        const url = cuentaId ? `/cuentas/${cuentaId}` : '/cuentas';
 
         fetch(url, {
             method: method,
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     function deleteCuenta(id) {
-        fetch(`/api/cuentas/${id}`, {
+        fetch(`/cuentas/${id}`, {
             method: 'DELETE',
         })
             .then(response => {
